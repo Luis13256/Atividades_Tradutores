@@ -103,3 +103,8 @@ palavra
 12.345.678/0001-95
 variavel
 '''
+
+Resultado executando no Pycharm:
+
+![image](https://github.com/user-attachments/assets/51ba17e1-2dfe-4c2a-84f6-e160d6ddca34)
+
