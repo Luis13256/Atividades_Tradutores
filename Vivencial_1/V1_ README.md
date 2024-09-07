@@ -33,8 +33,7 @@ O parser é construído usando as regras definidas para estruturar como os token
 ### Função de Teste
 A função `test_parser` permite testar o parser com strings de entrada específicas para verificar se o analisador está funcionando como esperado.
 
-## Execução e Testes
+## Execução
 O script principal executa o parser em algumas declarações de exemplo para demonstrar sua funcionalidade. Os resultados mostram que o parser consegue corretamente identificar os componentes de cada declaração, como o tipo de dado e os identificadores das variáveis.
 
-## Conclusão
-Este analisador léxico e sintático fornece uma base sólida para a análise de declarações de variáveis em uma linguagem de programação, com potencial para expansão e adaptação para outras características e sintaxes de linguagens.
+![Demo](print.png)
