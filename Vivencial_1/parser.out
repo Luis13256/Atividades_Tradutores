@@ -1,0 +1,143 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> declaration
+Rule 1     declaration -> type var_list SEMICOLON
+Rule 2     type -> TYPE
+Rule 3     var_list -> var
+Rule 4     var_list -> var COMMA var_list
+Rule 5     var -> IDENTIFIER
+Rule 6     var -> IDENTIFIER LBRACKET NUMBER RBRACKET
+
+Terminals, with rules where they appear
+
+COMMA                : 4
+IDENTIFIER           : 5 6
+LBRACKET             : 6
+NUMBER               : 6
+RBRACKET             : 6
+SEMICOLON            : 1
+TYPE                 : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+declaration          : 0
+type                 : 1
+var                  : 3 4
+var_list             : 1 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . declaration
+    (1) declaration -> . type var_list SEMICOLON
+    (2) type -> . TYPE
+
+    TYPE            shift and go to state 3
+
+    declaration                    shift and go to state 1
+    type                           shift and go to state 2
+
+state 1
+
+    (0) S' -> declaration .
+
+
+
+state 2
+
+    (1) declaration -> type . var_list SEMICOLON
+    (3) var_list -> . var
+    (4) var_list -> . var COMMA var_list
+    (5) var -> . IDENTIFIER
+    (6) var -> . IDENTIFIER LBRACKET NUMBER RBRACKET
+
+    IDENTIFIER      shift and go to state 6
+
+    var_list                       shift and go to state 4
+    var                            shift and go to state 5
+
+state 3
+
+    (2) type -> TYPE .
+
+    IDENTIFIER      reduce using rule 2 (type -> TYPE .)
+
+
+state 4
+
+    (1) declaration -> type var_list . SEMICOLON
+
+    SEMICOLON       shift and go to state 7
+
+
+state 5
+
+    (3) var_list -> var .
+    (4) var_list -> var . COMMA var_list
+
+    SEMICOLON       reduce using rule 3 (var_list -> var .)
+    COMMA           shift and go to state 8
+
+
+state 6
+
+    (5) var -> IDENTIFIER .
+    (6) var -> IDENTIFIER . LBRACKET NUMBER RBRACKET
+
+    COMMA           reduce using rule 5 (var -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 5 (var -> IDENTIFIER .)
+    LBRACKET        shift and go to state 9
+
+
+state 7
+
+    (1) declaration -> type var_list SEMICOLON .
+
+    $end            reduce using rule 1 (declaration -> type var_list SEMICOLON .)
+
+
+state 8
+
+    (4) var_list -> var COMMA . var_list
+    (3) var_list -> . var
+    (4) var_list -> . var COMMA var_list
+    (5) var -> . IDENTIFIER
+    (6) var -> . IDENTIFIER LBRACKET NUMBER RBRACKET
+
+    IDENTIFIER      shift and go to state 6
+
+    var                            shift and go to state 5
+    var_list                       shift and go to state 10
+
+state 9
+
+    (6) var -> IDENTIFIER LBRACKET . NUMBER RBRACKET
+
+    NUMBER          shift and go to state 11
+
+
+state 10
+
+    (4) var_list -> var COMMA var_list .
+
+    SEMICOLON       reduce using rule 4 (var_list -> var COMMA var_list .)
+
+
+state 11
+
+    (6) var -> IDENTIFIER LBRACKET NUMBER . RBRACKET
+
+    RBRACKET        shift and go to state 12
+
+
+state 12
+
+    (6) var -> IDENTIFIER LBRACKET NUMBER RBRACKET .
+
+    COMMA           reduce using rule 6 (var -> IDENTIFIER LBRACKET NUMBER RBRACKET .)
+    SEMICOLON       reduce using rule 6 (var -> IDENTIFIER LBRACKET NUMBER RBRACKET .)
+
