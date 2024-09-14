@@ -1,0 +1,14 @@
+int a, b, c;
+char letra;
+float valor;
+char nome[50];
+
+if(a == b){
+    c = a + b;
+} else {
+    c = a - b;
+}
+
+while(c > 0){
+    c -= 1;
+}

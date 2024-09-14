@@ -1,0 +1,1277 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> lista_declaracoes_comandos
+Rule 2     lista_declaracoes_comandos -> declaracao_comando
+Rule 3     lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando
+Rule 4     declaracao_comando -> declaracao
+Rule 5     declaracao_comando -> comando
+Rule 6     declaracao -> tipo lista_variaveis SEMICOLON
+Rule 7     tipo -> CHAR
+Rule 8     tipo -> INT
+Rule 9     tipo -> FLOAT
+Rule 10    lista_variaveis -> variavel
+Rule 11    lista_variaveis -> lista_variaveis COMMA variavel
+Rule 12    variavel -> IDENTIFIER
+Rule 13    variavel -> IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET
+Rule 14    comando -> comando_if
+Rule 15    comando -> comando_while
+Rule 16    comando -> comando_atribuicao
+Rule 17    comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+Rule 18    opcional_else -> ELSE LBRACE lista_comandos RBRACE
+Rule 19    opcional_else -> empty
+Rule 20    comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+Rule 21    lista_comandos -> comando
+Rule 22    lista_comandos -> lista_comandos comando
+Rule 23    comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+Rule 24    operador_atribuicao -> EQUAL
+Rule 25    operador_atribuicao -> PLUS_EQUAL
+Rule 26    operador_atribuicao -> MINUS_EQUAL
+Rule 27    operador_atribuicao -> TIMES_EQUAL
+Rule 28    operador_atribuicao -> DIVIDE_EQUAL
+Rule 29    condicao -> expressao_aritmetica operador_relacional expressao_aritmetica
+Rule 30    operador_relacional -> EQUAL_EQUAL
+Rule 31    operador_relacional -> NOT_EQUAL
+Rule 32    operador_relacional -> LESS_EQUAL
+Rule 33    operador_relacional -> GREATER_EQUAL
+Rule 34    operador_relacional -> LESS
+Rule 35    operador_relacional -> GREATER
+Rule 36    expressao_aritmetica -> expressao_aritmetica PLUS termo
+Rule 37    expressao_aritmetica -> expressao_aritmetica MINUS termo
+Rule 38    expressao_aritmetica -> termo
+Rule 39    termo -> termo TIMES fator
+Rule 40    termo -> termo DIVIDE fator
+Rule 41    termo -> fator
+Rule 42    fator -> IDENTIFIER
+Rule 43    fator -> numero
+Rule 44    fator -> LPAREN expressao_aritmetica RPAREN
+Rule 45    numero -> NUMERO_INTEIRO
+Rule 46    numero -> NUMERO_REAL
+Rule 47    empty -> <empty>
+
+Terminals, with rules where they appear
+
+CHAR                 : 7
+COMMA                : 11
+DIVIDE               : 40
+DIVIDE_EQUAL         : 28
+ELSE                 : 18
+EQUAL                : 24
+EQUAL_EQUAL          : 30
+FLOAT                : 9
+GREATER              : 35
+GREATER_EQUAL        : 33
+IDENTIFIER           : 12 13 23 42
+IF                   : 17
+INT                  : 8
+LBRACE               : 17 18 20
+LBRACKET             : 13
+LESS                 : 34
+LESS_EQUAL           : 32
+LPAREN               : 17 20 44
+MINUS                : 37
+MINUS_EQUAL          : 26
+NOT_EQUAL            : 31
+NUMERO_INTEIRO       : 13 45
+NUMERO_REAL          : 46
+PLUS                 : 36
+PLUS_EQUAL           : 25
+RBRACE               : 17 18 20
+RBRACKET             : 13
+RPAREN               : 17 20 44
+SEMICOLON            : 6 23
+TIMES                : 39
+TIMES_EQUAL          : 27
+WHILE                : 20
+error                : 
+
+Nonterminals, with rules where they appear
+
+comando              : 5 21 22
+comando_atribuicao   : 16
+comando_if           : 14
+comando_while        : 15
+condicao             : 17 20
+declaracao           : 4
+declaracao_comando   : 2 3
+empty                : 19
+expressao_aritmetica : 23 29 29 36 37 44
+fator                : 39 40 41
+lista_comandos       : 17 18 20 22
+lista_declaracoes_comandos : 1 3
+lista_variaveis      : 6 11
+numero               : 43
+opcional_else        : 17
+operador_atribuicao  : 23
+operador_relacional  : 29
+programa             : 0
+termo                : 36 37 38 39 40
+tipo                 : 6
+variavel             : 10 11
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . lista_declaracoes_comandos
+    (2) lista_declaracoes_comandos -> . declaracao_comando
+    (3) lista_declaracoes_comandos -> . lista_declaracoes_comandos declaracao_comando
+    (4) declaracao_comando -> . declaracao
+    (5) declaracao_comando -> . comando
+    (6) declaracao -> . tipo lista_variaveis SEMICOLON
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (7) tipo -> . CHAR
+    (8) tipo -> . INT
+    (9) tipo -> . FLOAT
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    CHAR            shift and go to state 10
+    INT             shift and go to state 11
+    FLOAT           shift and go to state 12
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    programa                       shift and go to state 1
+    lista_declaracoes_comandos     shift and go to state 2
+    declaracao_comando             shift and go to state 3
+    declaracao                     shift and go to state 4
+    comando                        shift and go to state 5
+    tipo                           shift and go to state 6
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> lista_declaracoes_comandos .
+    (3) lista_declaracoes_comandos -> lista_declaracoes_comandos . declaracao_comando
+    (4) declaracao_comando -> . declaracao
+    (5) declaracao_comando -> . comando
+    (6) declaracao -> . tipo lista_variaveis SEMICOLON
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (7) tipo -> . CHAR
+    (8) tipo -> . INT
+    (9) tipo -> . FLOAT
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    $end            reduce using rule 1 (programa -> lista_declaracoes_comandos .)
+    CHAR            shift and go to state 10
+    INT             shift and go to state 11
+    FLOAT           shift and go to state 12
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    declaracao_comando             shift and go to state 16
+    declaracao                     shift and go to state 4
+    comando                        shift and go to state 5
+    tipo                           shift and go to state 6
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 3
+
+    (2) lista_declaracoes_comandos -> declaracao_comando .
+
+    CHAR            reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    INT             reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    FLOAT           reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    IF              reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    WHILE           reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    IDENTIFIER      reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+    $end            reduce using rule 2 (lista_declaracoes_comandos -> declaracao_comando .)
+
+
+state 4
+
+    (4) declaracao_comando -> declaracao .
+
+    CHAR            reduce using rule 4 (declaracao_comando -> declaracao .)
+    INT             reduce using rule 4 (declaracao_comando -> declaracao .)
+    FLOAT           reduce using rule 4 (declaracao_comando -> declaracao .)
+    IF              reduce using rule 4 (declaracao_comando -> declaracao .)
+    WHILE           reduce using rule 4 (declaracao_comando -> declaracao .)
+    IDENTIFIER      reduce using rule 4 (declaracao_comando -> declaracao .)
+    $end            reduce using rule 4 (declaracao_comando -> declaracao .)
+
+
+state 5
+
+    (5) declaracao_comando -> comando .
+
+    CHAR            reduce using rule 5 (declaracao_comando -> comando .)
+    INT             reduce using rule 5 (declaracao_comando -> comando .)
+    FLOAT           reduce using rule 5 (declaracao_comando -> comando .)
+    IF              reduce using rule 5 (declaracao_comando -> comando .)
+    WHILE           reduce using rule 5 (declaracao_comando -> comando .)
+    IDENTIFIER      reduce using rule 5 (declaracao_comando -> comando .)
+    $end            reduce using rule 5 (declaracao_comando -> comando .)
+
+
+state 6
+
+    (6) declaracao -> tipo . lista_variaveis SEMICOLON
+    (10) lista_variaveis -> . variavel
+    (11) lista_variaveis -> . lista_variaveis COMMA variavel
+    (12) variavel -> . IDENTIFIER
+    (13) variavel -> . IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET
+
+    IDENTIFIER      shift and go to state 19
+
+    lista_variaveis                shift and go to state 17
+    variavel                       shift and go to state 18
+
+state 7
+
+    (14) comando -> comando_if .
+
+    CHAR            reduce using rule 14 (comando -> comando_if .)
+    INT             reduce using rule 14 (comando -> comando_if .)
+    FLOAT           reduce using rule 14 (comando -> comando_if .)
+    IF              reduce using rule 14 (comando -> comando_if .)
+    WHILE           reduce using rule 14 (comando -> comando_if .)
+    IDENTIFIER      reduce using rule 14 (comando -> comando_if .)
+    $end            reduce using rule 14 (comando -> comando_if .)
+    RBRACE          reduce using rule 14 (comando -> comando_if .)
+
+
+state 8
+
+    (15) comando -> comando_while .
+
+    CHAR            reduce using rule 15 (comando -> comando_while .)
+    INT             reduce using rule 15 (comando -> comando_while .)
+    FLOAT           reduce using rule 15 (comando -> comando_while .)
+    IF              reduce using rule 15 (comando -> comando_while .)
+    WHILE           reduce using rule 15 (comando -> comando_while .)
+    IDENTIFIER      reduce using rule 15 (comando -> comando_while .)
+    $end            reduce using rule 15 (comando -> comando_while .)
+    RBRACE          reduce using rule 15 (comando -> comando_while .)
+
+
+state 9
+
+    (16) comando -> comando_atribuicao .
+
+    CHAR            reduce using rule 16 (comando -> comando_atribuicao .)
+    INT             reduce using rule 16 (comando -> comando_atribuicao .)
+    FLOAT           reduce using rule 16 (comando -> comando_atribuicao .)
+    IF              reduce using rule 16 (comando -> comando_atribuicao .)
+    WHILE           reduce using rule 16 (comando -> comando_atribuicao .)
+    IDENTIFIER      reduce using rule 16 (comando -> comando_atribuicao .)
+    $end            reduce using rule 16 (comando -> comando_atribuicao .)
+    RBRACE          reduce using rule 16 (comando -> comando_atribuicao .)
+
+
+state 10
+
+    (7) tipo -> CHAR .
+
+    IDENTIFIER      reduce using rule 7 (tipo -> CHAR .)
+
+
+state 11
+
+    (8) tipo -> INT .
+
+    IDENTIFIER      reduce using rule 8 (tipo -> INT .)
+
+
+state 12
+
+    (9) tipo -> FLOAT .
+
+    IDENTIFIER      reduce using rule 9 (tipo -> FLOAT .)
+
+
+state 13
+
+    (17) comando_if -> IF . LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+
+    LPAREN          shift and go to state 20
+
+
+state 14
+
+    (20) comando_while -> WHILE . LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+
+    LPAREN          shift and go to state 21
+
+
+state 15
+
+    (23) comando_atribuicao -> IDENTIFIER . operador_atribuicao expressao_aritmetica SEMICOLON
+    (24) operador_atribuicao -> . EQUAL
+    (25) operador_atribuicao -> . PLUS_EQUAL
+    (26) operador_atribuicao -> . MINUS_EQUAL
+    (27) operador_atribuicao -> . TIMES_EQUAL
+    (28) operador_atribuicao -> . DIVIDE_EQUAL
+
+    EQUAL           shift and go to state 23
+    PLUS_EQUAL      shift and go to state 24
+    MINUS_EQUAL     shift and go to state 25
+    TIMES_EQUAL     shift and go to state 26
+    DIVIDE_EQUAL    shift and go to state 27
+
+    operador_atribuicao            shift and go to state 22
+
+state 16
+
+    (3) lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .
+
+    CHAR            reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    INT             reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    FLOAT           reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    IF              reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    WHILE           reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    IDENTIFIER      reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+    $end            reduce using rule 3 (lista_declaracoes_comandos -> lista_declaracoes_comandos declaracao_comando .)
+
+
+state 17
+
+    (6) declaracao -> tipo lista_variaveis . SEMICOLON
+    (11) lista_variaveis -> lista_variaveis . COMMA variavel
+
+    SEMICOLON       shift and go to state 28
+    COMMA           shift and go to state 29
+
+
+state 18
+
+    (10) lista_variaveis -> variavel .
+
+    SEMICOLON       reduce using rule 10 (lista_variaveis -> variavel .)
+    COMMA           reduce using rule 10 (lista_variaveis -> variavel .)
+
+
+state 19
+
+    (12) variavel -> IDENTIFIER .
+    (13) variavel -> IDENTIFIER . LBRACKET NUMERO_INTEIRO RBRACKET
+
+    SEMICOLON       reduce using rule 12 (variavel -> IDENTIFIER .)
+    COMMA           reduce using rule 12 (variavel -> IDENTIFIER .)
+    LBRACKET        shift and go to state 30
+
+
+state 20
+
+    (17) comando_if -> IF LPAREN . condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (29) condicao -> . expressao_aritmetica operador_relacional expressao_aritmetica
+    (36) expressao_aritmetica -> . expressao_aritmetica PLUS termo
+    (37) expressao_aritmetica -> . expressao_aritmetica MINUS termo
+    (38) expressao_aritmetica -> . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    condicao                       shift and go to state 32
+    expressao_aritmetica           shift and go to state 33
+    termo                          shift and go to state 34
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 21
+
+    (20) comando_while -> WHILE LPAREN . condicao RPAREN LBRACE lista_comandos RBRACE
+    (29) condicao -> . expressao_aritmetica operador_relacional expressao_aritmetica
+    (36) expressao_aritmetica -> . expressao_aritmetica PLUS termo
+    (37) expressao_aritmetica -> . expressao_aritmetica MINUS termo
+    (38) expressao_aritmetica -> . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    condicao                       shift and go to state 40
+    expressao_aritmetica           shift and go to state 33
+    termo                          shift and go to state 34
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 22
+
+    (23) comando_atribuicao -> IDENTIFIER operador_atribuicao . expressao_aritmetica SEMICOLON
+    (36) expressao_aritmetica -> . expressao_aritmetica PLUS termo
+    (37) expressao_aritmetica -> . expressao_aritmetica MINUS termo
+    (38) expressao_aritmetica -> . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    expressao_aritmetica           shift and go to state 41
+    termo                          shift and go to state 34
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 23
+
+    (24) operador_atribuicao -> EQUAL .
+
+    IDENTIFIER      reduce using rule 24 (operador_atribuicao -> EQUAL .)
+    LPAREN          reduce using rule 24 (operador_atribuicao -> EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 24 (operador_atribuicao -> EQUAL .)
+    NUMERO_REAL     reduce using rule 24 (operador_atribuicao -> EQUAL .)
+
+
+state 24
+
+    (25) operador_atribuicao -> PLUS_EQUAL .
+
+    IDENTIFIER      reduce using rule 25 (operador_atribuicao -> PLUS_EQUAL .)
+    LPAREN          reduce using rule 25 (operador_atribuicao -> PLUS_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 25 (operador_atribuicao -> PLUS_EQUAL .)
+    NUMERO_REAL     reduce using rule 25 (operador_atribuicao -> PLUS_EQUAL .)
+
+
+state 25
+
+    (26) operador_atribuicao -> MINUS_EQUAL .
+
+    IDENTIFIER      reduce using rule 26 (operador_atribuicao -> MINUS_EQUAL .)
+    LPAREN          reduce using rule 26 (operador_atribuicao -> MINUS_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 26 (operador_atribuicao -> MINUS_EQUAL .)
+    NUMERO_REAL     reduce using rule 26 (operador_atribuicao -> MINUS_EQUAL .)
+
+
+state 26
+
+    (27) operador_atribuicao -> TIMES_EQUAL .
+
+    IDENTIFIER      reduce using rule 27 (operador_atribuicao -> TIMES_EQUAL .)
+    LPAREN          reduce using rule 27 (operador_atribuicao -> TIMES_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 27 (operador_atribuicao -> TIMES_EQUAL .)
+    NUMERO_REAL     reduce using rule 27 (operador_atribuicao -> TIMES_EQUAL .)
+
+
+state 27
+
+    (28) operador_atribuicao -> DIVIDE_EQUAL .
+
+    IDENTIFIER      reduce using rule 28 (operador_atribuicao -> DIVIDE_EQUAL .)
+    LPAREN          reduce using rule 28 (operador_atribuicao -> DIVIDE_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 28 (operador_atribuicao -> DIVIDE_EQUAL .)
+    NUMERO_REAL     reduce using rule 28 (operador_atribuicao -> DIVIDE_EQUAL .)
+
+
+state 28
+
+    (6) declaracao -> tipo lista_variaveis SEMICOLON .
+
+    CHAR            reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    INT             reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    FLOAT           reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    IF              reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    WHILE           reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    IDENTIFIER      reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+    $end            reduce using rule 6 (declaracao -> tipo lista_variaveis SEMICOLON .)
+
+
+state 29
+
+    (11) lista_variaveis -> lista_variaveis COMMA . variavel
+    (12) variavel -> . IDENTIFIER
+    (13) variavel -> . IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET
+
+    IDENTIFIER      shift and go to state 19
+
+    variavel                       shift and go to state 42
+
+state 30
+
+    (13) variavel -> IDENTIFIER LBRACKET . NUMERO_INTEIRO RBRACKET
+
+    NUMERO_INTEIRO  shift and go to state 43
+
+
+state 31
+
+    (44) fator -> LPAREN . expressao_aritmetica RPAREN
+    (36) expressao_aritmetica -> . expressao_aritmetica PLUS termo
+    (37) expressao_aritmetica -> . expressao_aritmetica MINUS termo
+    (38) expressao_aritmetica -> . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    expressao_aritmetica           shift and go to state 44
+    termo                          shift and go to state 34
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 32
+
+    (17) comando_if -> IF LPAREN condicao . RPAREN LBRACE lista_comandos RBRACE opcional_else
+
+    RPAREN          shift and go to state 45
+
+
+state 33
+
+    (29) condicao -> expressao_aritmetica . operador_relacional expressao_aritmetica
+    (36) expressao_aritmetica -> expressao_aritmetica . PLUS termo
+    (37) expressao_aritmetica -> expressao_aritmetica . MINUS termo
+    (30) operador_relacional -> . EQUAL_EQUAL
+    (31) operador_relacional -> . NOT_EQUAL
+    (32) operador_relacional -> . LESS_EQUAL
+    (33) operador_relacional -> . GREATER_EQUAL
+    (34) operador_relacional -> . LESS
+    (35) operador_relacional -> . GREATER
+
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+    EQUAL_EQUAL     shift and go to state 49
+    NOT_EQUAL       shift and go to state 50
+    LESS_EQUAL      shift and go to state 51
+    GREATER_EQUAL   shift and go to state 52
+    LESS            shift and go to state 53
+    GREATER         shift and go to state 54
+
+    operador_relacional            shift and go to state 46
+
+state 34
+
+    (38) expressao_aritmetica -> termo .
+    (39) termo -> termo . TIMES fator
+    (40) termo -> termo . DIVIDE fator
+
+    PLUS            reduce using rule 38 (expressao_aritmetica -> termo .)
+    MINUS           reduce using rule 38 (expressao_aritmetica -> termo .)
+    EQUAL_EQUAL     reduce using rule 38 (expressao_aritmetica -> termo .)
+    NOT_EQUAL       reduce using rule 38 (expressao_aritmetica -> termo .)
+    LESS_EQUAL      reduce using rule 38 (expressao_aritmetica -> termo .)
+    GREATER_EQUAL   reduce using rule 38 (expressao_aritmetica -> termo .)
+    LESS            reduce using rule 38 (expressao_aritmetica -> termo .)
+    GREATER         reduce using rule 38 (expressao_aritmetica -> termo .)
+    SEMICOLON       reduce using rule 38 (expressao_aritmetica -> termo .)
+    RPAREN          reduce using rule 38 (expressao_aritmetica -> termo .)
+    TIMES           shift and go to state 55
+    DIVIDE          shift and go to state 56
+
+
+state 35
+
+    (41) termo -> fator .
+
+    TIMES           reduce using rule 41 (termo -> fator .)
+    DIVIDE          reduce using rule 41 (termo -> fator .)
+    PLUS            reduce using rule 41 (termo -> fator .)
+    MINUS           reduce using rule 41 (termo -> fator .)
+    EQUAL_EQUAL     reduce using rule 41 (termo -> fator .)
+    NOT_EQUAL       reduce using rule 41 (termo -> fator .)
+    LESS_EQUAL      reduce using rule 41 (termo -> fator .)
+    GREATER_EQUAL   reduce using rule 41 (termo -> fator .)
+    LESS            reduce using rule 41 (termo -> fator .)
+    GREATER         reduce using rule 41 (termo -> fator .)
+    SEMICOLON       reduce using rule 41 (termo -> fator .)
+    RPAREN          reduce using rule 41 (termo -> fator .)
+
+
+state 36
+
+    (42) fator -> IDENTIFIER .
+
+    TIMES           reduce using rule 42 (fator -> IDENTIFIER .)
+    DIVIDE          reduce using rule 42 (fator -> IDENTIFIER .)
+    PLUS            reduce using rule 42 (fator -> IDENTIFIER .)
+    MINUS           reduce using rule 42 (fator -> IDENTIFIER .)
+    EQUAL_EQUAL     reduce using rule 42 (fator -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 42 (fator -> IDENTIFIER .)
+    LESS_EQUAL      reduce using rule 42 (fator -> IDENTIFIER .)
+    GREATER_EQUAL   reduce using rule 42 (fator -> IDENTIFIER .)
+    LESS            reduce using rule 42 (fator -> IDENTIFIER .)
+    GREATER         reduce using rule 42 (fator -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 42 (fator -> IDENTIFIER .)
+    RPAREN          reduce using rule 42 (fator -> IDENTIFIER .)
+
+
+state 37
+
+    (43) fator -> numero .
+
+    TIMES           reduce using rule 43 (fator -> numero .)
+    DIVIDE          reduce using rule 43 (fator -> numero .)
+    PLUS            reduce using rule 43 (fator -> numero .)
+    MINUS           reduce using rule 43 (fator -> numero .)
+    EQUAL_EQUAL     reduce using rule 43 (fator -> numero .)
+    NOT_EQUAL       reduce using rule 43 (fator -> numero .)
+    LESS_EQUAL      reduce using rule 43 (fator -> numero .)
+    GREATER_EQUAL   reduce using rule 43 (fator -> numero .)
+    LESS            reduce using rule 43 (fator -> numero .)
+    GREATER         reduce using rule 43 (fator -> numero .)
+    SEMICOLON       reduce using rule 43 (fator -> numero .)
+    RPAREN          reduce using rule 43 (fator -> numero .)
+
+
+state 38
+
+    (45) numero -> NUMERO_INTEIRO .
+
+    TIMES           reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    DIVIDE          reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    PLUS            reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    MINUS           reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    EQUAL_EQUAL     reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    NOT_EQUAL       reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    LESS_EQUAL      reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    GREATER_EQUAL   reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    LESS            reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    GREATER         reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    SEMICOLON       reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+    RPAREN          reduce using rule 45 (numero -> NUMERO_INTEIRO .)
+
+
+state 39
+
+    (46) numero -> NUMERO_REAL .
+
+    TIMES           reduce using rule 46 (numero -> NUMERO_REAL .)
+    DIVIDE          reduce using rule 46 (numero -> NUMERO_REAL .)
+    PLUS            reduce using rule 46 (numero -> NUMERO_REAL .)
+    MINUS           reduce using rule 46 (numero -> NUMERO_REAL .)
+    EQUAL_EQUAL     reduce using rule 46 (numero -> NUMERO_REAL .)
+    NOT_EQUAL       reduce using rule 46 (numero -> NUMERO_REAL .)
+    LESS_EQUAL      reduce using rule 46 (numero -> NUMERO_REAL .)
+    GREATER_EQUAL   reduce using rule 46 (numero -> NUMERO_REAL .)
+    LESS            reduce using rule 46 (numero -> NUMERO_REAL .)
+    GREATER         reduce using rule 46 (numero -> NUMERO_REAL .)
+    SEMICOLON       reduce using rule 46 (numero -> NUMERO_REAL .)
+    RPAREN          reduce using rule 46 (numero -> NUMERO_REAL .)
+
+
+state 40
+
+    (20) comando_while -> WHILE LPAREN condicao . RPAREN LBRACE lista_comandos RBRACE
+
+    RPAREN          shift and go to state 57
+
+
+state 41
+
+    (23) comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica . SEMICOLON
+    (36) expressao_aritmetica -> expressao_aritmetica . PLUS termo
+    (37) expressao_aritmetica -> expressao_aritmetica . MINUS termo
+
+    SEMICOLON       shift and go to state 58
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+
+
+state 42
+
+    (11) lista_variaveis -> lista_variaveis COMMA variavel .
+
+    SEMICOLON       reduce using rule 11 (lista_variaveis -> lista_variaveis COMMA variavel .)
+    COMMA           reduce using rule 11 (lista_variaveis -> lista_variaveis COMMA variavel .)
+
+
+state 43
+
+    (13) variavel -> IDENTIFIER LBRACKET NUMERO_INTEIRO . RBRACKET
+
+    RBRACKET        shift and go to state 59
+
+
+state 44
+
+    (44) fator -> LPAREN expressao_aritmetica . RPAREN
+    (36) expressao_aritmetica -> expressao_aritmetica . PLUS termo
+    (37) expressao_aritmetica -> expressao_aritmetica . MINUS termo
+
+    RPAREN          shift and go to state 60
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+
+
+state 45
+
+    (17) comando_if -> IF LPAREN condicao RPAREN . LBRACE lista_comandos RBRACE opcional_else
+
+    LBRACE          shift and go to state 61
+
+
+state 46
+
+    (29) condicao -> expressao_aritmetica operador_relacional . expressao_aritmetica
+    (36) expressao_aritmetica -> . expressao_aritmetica PLUS termo
+    (37) expressao_aritmetica -> . expressao_aritmetica MINUS termo
+    (38) expressao_aritmetica -> . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    expressao_aritmetica           shift and go to state 62
+    termo                          shift and go to state 34
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 47
+
+    (36) expressao_aritmetica -> expressao_aritmetica PLUS . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    termo                          shift and go to state 63
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 48
+
+    (37) expressao_aritmetica -> expressao_aritmetica MINUS . termo
+    (39) termo -> . termo TIMES fator
+    (40) termo -> . termo DIVIDE fator
+    (41) termo -> . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    termo                          shift and go to state 64
+    fator                          shift and go to state 35
+    numero                         shift and go to state 37
+
+state 49
+
+    (30) operador_relacional -> EQUAL_EQUAL .
+
+    IDENTIFIER      reduce using rule 30 (operador_relacional -> EQUAL_EQUAL .)
+    LPAREN          reduce using rule 30 (operador_relacional -> EQUAL_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 30 (operador_relacional -> EQUAL_EQUAL .)
+    NUMERO_REAL     reduce using rule 30 (operador_relacional -> EQUAL_EQUAL .)
+
+
+state 50
+
+    (31) operador_relacional -> NOT_EQUAL .
+
+    IDENTIFIER      reduce using rule 31 (operador_relacional -> NOT_EQUAL .)
+    LPAREN          reduce using rule 31 (operador_relacional -> NOT_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 31 (operador_relacional -> NOT_EQUAL .)
+    NUMERO_REAL     reduce using rule 31 (operador_relacional -> NOT_EQUAL .)
+
+
+state 51
+
+    (32) operador_relacional -> LESS_EQUAL .
+
+    IDENTIFIER      reduce using rule 32 (operador_relacional -> LESS_EQUAL .)
+    LPAREN          reduce using rule 32 (operador_relacional -> LESS_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 32 (operador_relacional -> LESS_EQUAL .)
+    NUMERO_REAL     reduce using rule 32 (operador_relacional -> LESS_EQUAL .)
+
+
+state 52
+
+    (33) operador_relacional -> GREATER_EQUAL .
+
+    IDENTIFIER      reduce using rule 33 (operador_relacional -> GREATER_EQUAL .)
+    LPAREN          reduce using rule 33 (operador_relacional -> GREATER_EQUAL .)
+    NUMERO_INTEIRO  reduce using rule 33 (operador_relacional -> GREATER_EQUAL .)
+    NUMERO_REAL     reduce using rule 33 (operador_relacional -> GREATER_EQUAL .)
+
+
+state 53
+
+    (34) operador_relacional -> LESS .
+
+    IDENTIFIER      reduce using rule 34 (operador_relacional -> LESS .)
+    LPAREN          reduce using rule 34 (operador_relacional -> LESS .)
+    NUMERO_INTEIRO  reduce using rule 34 (operador_relacional -> LESS .)
+    NUMERO_REAL     reduce using rule 34 (operador_relacional -> LESS .)
+
+
+state 54
+
+    (35) operador_relacional -> GREATER .
+
+    IDENTIFIER      reduce using rule 35 (operador_relacional -> GREATER .)
+    LPAREN          reduce using rule 35 (operador_relacional -> GREATER .)
+    NUMERO_INTEIRO  reduce using rule 35 (operador_relacional -> GREATER .)
+    NUMERO_REAL     reduce using rule 35 (operador_relacional -> GREATER .)
+
+
+state 55
+
+    (39) termo -> termo TIMES . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    fator                          shift and go to state 65
+    numero                         shift and go to state 37
+
+state 56
+
+    (40) termo -> termo DIVIDE . fator
+    (42) fator -> . IDENTIFIER
+    (43) fator -> . numero
+    (44) fator -> . LPAREN expressao_aritmetica RPAREN
+    (45) numero -> . NUMERO_INTEIRO
+    (46) numero -> . NUMERO_REAL
+
+    IDENTIFIER      shift and go to state 36
+    LPAREN          shift and go to state 31
+    NUMERO_INTEIRO  shift and go to state 38
+    NUMERO_REAL     shift and go to state 39
+
+    fator                          shift and go to state 66
+    numero                         shift and go to state 37
+
+state 57
+
+    (20) comando_while -> WHILE LPAREN condicao RPAREN . LBRACE lista_comandos RBRACE
+
+    LBRACE          shift and go to state 67
+
+
+state 58
+
+    (23) comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .
+
+    CHAR            reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    INT             reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    FLOAT           reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    IF              reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    WHILE           reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    IDENTIFIER      reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    $end            reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+    RBRACE          reduce using rule 23 (comando_atribuicao -> IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON .)
+
+
+state 59
+
+    (13) variavel -> IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET .
+
+    SEMICOLON       reduce using rule 13 (variavel -> IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET .)
+    COMMA           reduce using rule 13 (variavel -> IDENTIFIER LBRACKET NUMERO_INTEIRO RBRACKET .)
+
+
+state 60
+
+    (44) fator -> LPAREN expressao_aritmetica RPAREN .
+
+    TIMES           reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    DIVIDE          reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    PLUS            reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    MINUS           reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    EQUAL_EQUAL     reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    NOT_EQUAL       reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    LESS_EQUAL      reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    GREATER_EQUAL   reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    LESS            reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    GREATER         reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    SEMICOLON       reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+    RPAREN          reduce using rule 44 (fator -> LPAREN expressao_aritmetica RPAREN .)
+
+
+state 61
+
+    (17) comando_if -> IF LPAREN condicao RPAREN LBRACE . lista_comandos RBRACE opcional_else
+    (21) lista_comandos -> . comando
+    (22) lista_comandos -> . lista_comandos comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    lista_comandos                 shift and go to state 68
+    comando                        shift and go to state 69
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 62
+
+    (29) condicao -> expressao_aritmetica operador_relacional expressao_aritmetica .
+    (36) expressao_aritmetica -> expressao_aritmetica . PLUS termo
+    (37) expressao_aritmetica -> expressao_aritmetica . MINUS termo
+
+    RPAREN          reduce using rule 29 (condicao -> expressao_aritmetica operador_relacional expressao_aritmetica .)
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+
+
+state 63
+
+    (36) expressao_aritmetica -> expressao_aritmetica PLUS termo .
+    (39) termo -> termo . TIMES fator
+    (40) termo -> termo . DIVIDE fator
+
+    PLUS            reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    MINUS           reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    EQUAL_EQUAL     reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    NOT_EQUAL       reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    LESS_EQUAL      reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    GREATER_EQUAL   reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    LESS            reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    GREATER         reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    SEMICOLON       reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    RPAREN          reduce using rule 36 (expressao_aritmetica -> expressao_aritmetica PLUS termo .)
+    TIMES           shift and go to state 55
+    DIVIDE          shift and go to state 56
+
+
+state 64
+
+    (37) expressao_aritmetica -> expressao_aritmetica MINUS termo .
+    (39) termo -> termo . TIMES fator
+    (40) termo -> termo . DIVIDE fator
+
+    PLUS            reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    MINUS           reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    EQUAL_EQUAL     reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    NOT_EQUAL       reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    LESS_EQUAL      reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    GREATER_EQUAL   reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    LESS            reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    GREATER         reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    SEMICOLON       reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    RPAREN          reduce using rule 37 (expressao_aritmetica -> expressao_aritmetica MINUS termo .)
+    TIMES           shift and go to state 55
+    DIVIDE          shift and go to state 56
+
+
+state 65
+
+    (39) termo -> termo TIMES fator .
+
+    TIMES           reduce using rule 39 (termo -> termo TIMES fator .)
+    DIVIDE          reduce using rule 39 (termo -> termo TIMES fator .)
+    PLUS            reduce using rule 39 (termo -> termo TIMES fator .)
+    MINUS           reduce using rule 39 (termo -> termo TIMES fator .)
+    EQUAL_EQUAL     reduce using rule 39 (termo -> termo TIMES fator .)
+    NOT_EQUAL       reduce using rule 39 (termo -> termo TIMES fator .)
+    LESS_EQUAL      reduce using rule 39 (termo -> termo TIMES fator .)
+    GREATER_EQUAL   reduce using rule 39 (termo -> termo TIMES fator .)
+    LESS            reduce using rule 39 (termo -> termo TIMES fator .)
+    GREATER         reduce using rule 39 (termo -> termo TIMES fator .)
+    SEMICOLON       reduce using rule 39 (termo -> termo TIMES fator .)
+    RPAREN          reduce using rule 39 (termo -> termo TIMES fator .)
+
+
+state 66
+
+    (40) termo -> termo DIVIDE fator .
+
+    TIMES           reduce using rule 40 (termo -> termo DIVIDE fator .)
+    DIVIDE          reduce using rule 40 (termo -> termo DIVIDE fator .)
+    PLUS            reduce using rule 40 (termo -> termo DIVIDE fator .)
+    MINUS           reduce using rule 40 (termo -> termo DIVIDE fator .)
+    EQUAL_EQUAL     reduce using rule 40 (termo -> termo DIVIDE fator .)
+    NOT_EQUAL       reduce using rule 40 (termo -> termo DIVIDE fator .)
+    LESS_EQUAL      reduce using rule 40 (termo -> termo DIVIDE fator .)
+    GREATER_EQUAL   reduce using rule 40 (termo -> termo DIVIDE fator .)
+    LESS            reduce using rule 40 (termo -> termo DIVIDE fator .)
+    GREATER         reduce using rule 40 (termo -> termo DIVIDE fator .)
+    SEMICOLON       reduce using rule 40 (termo -> termo DIVIDE fator .)
+    RPAREN          reduce using rule 40 (termo -> termo DIVIDE fator .)
+
+
+state 67
+
+    (20) comando_while -> WHILE LPAREN condicao RPAREN LBRACE . lista_comandos RBRACE
+    (21) lista_comandos -> . comando
+    (22) lista_comandos -> . lista_comandos comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    lista_comandos                 shift and go to state 70
+    comando                        shift and go to state 69
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 68
+
+    (17) comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos . RBRACE opcional_else
+    (22) lista_comandos -> lista_comandos . comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    RBRACE          shift and go to state 71
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    comando                        shift and go to state 72
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 69
+
+    (21) lista_comandos -> comando .
+
+    RBRACE          reduce using rule 21 (lista_comandos -> comando .)
+    IF              reduce using rule 21 (lista_comandos -> comando .)
+    WHILE           reduce using rule 21 (lista_comandos -> comando .)
+    IDENTIFIER      reduce using rule 21 (lista_comandos -> comando .)
+
+
+state 70
+
+    (20) comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos . RBRACE
+    (22) lista_comandos -> lista_comandos . comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    RBRACE          shift and go to state 73
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    comando                        shift and go to state 72
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 71
+
+    (17) comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE . opcional_else
+    (18) opcional_else -> . ELSE LBRACE lista_comandos RBRACE
+    (19) opcional_else -> . empty
+    (47) empty -> .
+
+    ELSE            shift and go to state 75
+    CHAR            reduce using rule 47 (empty -> .)
+    INT             reduce using rule 47 (empty -> .)
+    FLOAT           reduce using rule 47 (empty -> .)
+    IF              reduce using rule 47 (empty -> .)
+    WHILE           reduce using rule 47 (empty -> .)
+    IDENTIFIER      reduce using rule 47 (empty -> .)
+    $end            reduce using rule 47 (empty -> .)
+    RBRACE          reduce using rule 47 (empty -> .)
+
+    opcional_else                  shift and go to state 74
+    empty                          shift and go to state 76
+
+state 72
+
+    (22) lista_comandos -> lista_comandos comando .
+
+    RBRACE          reduce using rule 22 (lista_comandos -> lista_comandos comando .)
+    IF              reduce using rule 22 (lista_comandos -> lista_comandos comando .)
+    WHILE           reduce using rule 22 (lista_comandos -> lista_comandos comando .)
+    IDENTIFIER      reduce using rule 22 (lista_comandos -> lista_comandos comando .)
+
+
+state 73
+
+    (20) comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .
+
+    CHAR            reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    INT             reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    FLOAT           reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    IF              reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    WHILE           reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    IDENTIFIER      reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    $end            reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+    RBRACE          reduce using rule 20 (comando_while -> WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE .)
+
+
+state 74
+
+    (17) comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .
+
+    CHAR            reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    INT             reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    FLOAT           reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    IF              reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    WHILE           reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    IDENTIFIER      reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    $end            reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+    RBRACE          reduce using rule 17 (comando_if -> IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else .)
+
+
+state 75
+
+    (18) opcional_else -> ELSE . LBRACE lista_comandos RBRACE
+
+    LBRACE          shift and go to state 77
+
+
+state 76
+
+    (19) opcional_else -> empty .
+
+    CHAR            reduce using rule 19 (opcional_else -> empty .)
+    INT             reduce using rule 19 (opcional_else -> empty .)
+    FLOAT           reduce using rule 19 (opcional_else -> empty .)
+    IF              reduce using rule 19 (opcional_else -> empty .)
+    WHILE           reduce using rule 19 (opcional_else -> empty .)
+    IDENTIFIER      reduce using rule 19 (opcional_else -> empty .)
+    $end            reduce using rule 19 (opcional_else -> empty .)
+    RBRACE          reduce using rule 19 (opcional_else -> empty .)
+
+
+state 77
+
+    (18) opcional_else -> ELSE LBRACE . lista_comandos RBRACE
+    (21) lista_comandos -> . comando
+    (22) lista_comandos -> . lista_comandos comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    lista_comandos                 shift and go to state 78
+    comando                        shift and go to state 69
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 78
+
+    (18) opcional_else -> ELSE LBRACE lista_comandos . RBRACE
+    (22) lista_comandos -> lista_comandos . comando
+    (14) comando -> . comando_if
+    (15) comando -> . comando_while
+    (16) comando -> . comando_atribuicao
+    (17) comando_if -> . IF LPAREN condicao RPAREN LBRACE lista_comandos RBRACE opcional_else
+    (20) comando_while -> . WHILE LPAREN condicao RPAREN LBRACE lista_comandos RBRACE
+    (23) comando_atribuicao -> . IDENTIFIER operador_atribuicao expressao_aritmetica SEMICOLON
+
+    RBRACE          shift and go to state 79
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    IDENTIFIER      shift and go to state 15
+
+    comando                        shift and go to state 72
+    comando_if                     shift and go to state 7
+    comando_while                  shift and go to state 8
+    comando_atribuicao             shift and go to state 9
+
+state 79
+
+    (18) opcional_else -> ELSE LBRACE lista_comandos RBRACE .
+
+    CHAR            reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    INT             reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    FLOAT           reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    IF              reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    WHILE           reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    IDENTIFIER      reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    $end            reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+    RBRACE          reduce using rule 18 (opcional_else -> ELSE LBRACE lista_comandos RBRACE .)
+
