@@ -3,14 +3,14 @@
 
 ## Especificações Gerais
 
-Este projeto tem como objetivo construir analisadores léxicos e sintáticos em Python, utilizando a biblioteca PLY, para reconhecer declarações de variáveis e comandos de controle (if/else e while) inspirados na linguagem C.
+Este projeto constrói analisadores léxicos e sintáticos em Python, utilizando a biblioteca PLY, para reconhecer declarações de variáveis e comandos de controle (`if/else` e `while`) inspirados na linguagem C.
 
 ### Tipos Reconhecidos:
 
 - **Tipos**: `char`, `int`, `float`.
-- **Declarações de `char`**: Pode ser um caractere único ou um array de caracteres. Exemplo: `char a;`, `char a[10];`.
-- **Declarações de `int`**: Compreende todos os valores inteiros. Sem restrições específicas.
-- **Declarações de `float`**: Compreende todos os valores reais com casas decimais (ponto flutuante). Sem restrições específicas.
+- **Declarações de `char`**: Caractere único ou um array de caracteres. Exemplos: `char a;`, `char a[10];`.
+- **Declarações de `int`**: Compreende todos os valores inteiros. Não há restrições específicas de valores.
+- **Declarações de `float`**: Compreende todos os valores reais com casas decimais (ponto flutuante). Não há restrições específicas de valores.
 - **Identificadores**: Devem iniciar com uma letra ou `_`, seguidos por letras, dígitos ou `_`. O único caractere especial permitido é `_`.
 - **Declarações**: Podem ser individuais ou em uma lista separada por vírgulas. Exemplo: `int a, b, c;`.
 - **Finalização**: Cada declaração termina com ponto-e-vírgula (`;`).
@@ -85,7 +85,7 @@ A seguir está a gramática em Notação BNF (Backus-Naur Form) utilizada para o
 <variavel>           ::= <identificador>
                        | <identificador> '[' <numero_inteiro> ']'
 
-<identificador>      ::= <letra_ou_sublinhado> <letras_digitos_sublinhados>*
+<identificador>      ::= <letra_ou_sublinhado> <letras_digitos_sublinhados>*  
 
 <letra_ou_sublinhado>::= [a-zA-Z_]
 
@@ -102,7 +102,7 @@ A seguir está a gramática em Notação BNF (Backus-Naur Form) utilizada para o
 <opcional_else>      ::= 'else' '{' <lista_comandos> '}'
                        | ε
 
-<comando_while>      ::= 'while' '(' <condicao> ')' '{' <lista_comandos> '}'
+<comando_while>      ::= 'while' '(' <condicao> ')' '{' <lista_comandos> }'
 
 <lista_comandos>     ::= <comando>
                        | <lista_comandos> <comando>
@@ -150,17 +150,17 @@ A seguir está a gramática em Notação BNF (Backus-Naur Form) utilizada para o
 
 ## Observações
 
-- **Finalização**: Cada comando e declaração deve ser finalizado com um ponto-e-vírgula (`;`).
-- **Declarações de Variáveis**: As variáveis devem seguir a gramática de identificadores descrita, e podem ser declaradas de forma individual ou em listas.
-- **Comandos `if` e `while`**: Podem conter operações matemáticas e atribuições dentro de seus blocos, que são executados conforme as condições especificadas.
+- **Finalização**: Cada comando e declaração é finalizado com ponto-e-vírgula (`;`).
+- **Declarações de Variáveis**: As variáveis seguem a gramática de identificadores descrita e podem ser declaradas de forma individual ou em listas.
+- **Comandos `if` e `while`**: Contêm operações matemáticas e atribuições dentro de seus blocos, que são executados conforme as condições especificadas.
 
 ## Implementação
 
-A implementação foi realizada em Python utilizando a biblioteca PLY (Python Lex-Yacc), que permite a criação de analisadores léxicos e sintáticos.
+A implementação foi realizada em Python utilizando a biblioteca PLY (Python Lex-Yacc), que possibilita a criação de analisadores léxicos e sintáticos.
 
 ### Analisador Léxico (lexer.py)
 
-O analisador léxico (`lexer.py`) reconhece tokens como identificadores, números, operadores, e palavras reservadas (char, int, float, if, else, while).
+O analisador léxico (`lexer.py`) reconhece tokens como identificadores, números, operadores, e palavras reservadas (`char`, `int`, `float`, `if`, `else`, `while`).
 
 ### Analisador Sintático (parser.py)
 
@@ -168,28 +168,28 @@ O analisador sintático (`parser.py`) utiliza as regras definidas na gramática 
 
 ### Arquivo de Entrada (entrada.txt)
 
-O código a ser analisado é fornecido em um arquivo de entrada (`entrada.txt`), que deve conter declarações de variáveis e comandos no estilo da linguagem C.
+O código a ser analisado é fornecido em um arquivo de entrada (`entrada.txt`), que contém declarações de variáveis e comandos no estilo da linguagem C.
 
-## Instruções para Execução
+## Instruções de Execução
 
-1. **Instale a Biblioteca PLY**:
+1. **Instalação da Biblioteca PLY**:
 
    ```bash
    pip install ply
    ```
 
-2. **Crie os arquivos de código e entrada** conforme o especificado.
+2. **Criação dos arquivos de código e entrada** conforme o especificado.
 
-3. **Execute o programa principal**:
+3. **Execução do programa principal**:
 
    ```bash
    python main.py
    ```
 
-4. **Verifique a saída**:
+4. **Saídas**:
 
-   - Se a análise for bem-sucedida, a mensagem "Análise sintática concluída com sucesso!" será exibida.
-   - Se houver erros, mensagens de erro indicativas serão fornecidas.
+   - Em caso de sucesso, a mensagem "Análise sintática concluída com sucesso!" é exibida.
+   - Em caso de erro, mensagens de erro apropriadas são fornecidas.
 
 ## Exemplo de Arquivo de Entrada (entrada.txt)
 
