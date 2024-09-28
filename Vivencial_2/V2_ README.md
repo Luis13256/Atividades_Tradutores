@@ -211,3 +211,8 @@ while(c > 0){
 ```
 
 ---
+
+
+## Print do main.py sendo executado:
+
+![main.py exe](image.png)
