@@ -16,59 +16,59 @@ reserved = {
 # A lista inclui tanto tokens manuais (como PLUS, MINUS) quanto as palavras reservadas.
 tokens = [
     'IDENTIFIER',  # Identificadores (nomes de variáveis, funções, etc.)
-    'NUMERO_INTEIRO',  # Números inteiros
+    'NUMERO_INTEIRO', 
     'NUMERO_REAL',  # Números reais (com ponto flutuante)
-    'PLUS',  # Operador de adição '+'
-    'MINUS',  # Operador de subtração '-'
-    'TIMES',  # Operador de multiplicação '*'
-    'DIVIDE',  # Operador de divisão '/'
-    'PLUS_EQUAL',  # Operador '+='
-    'MINUS_EQUAL',  # Operador '-='
-    'TIMES_EQUAL',  # Operador '*='
-    'DIVIDE_EQUAL',  # Operador '/='
-    'EQUAL',  # Operador de atribuição '='
-    'EQUAL_EQUAL',  # Operador de igualdade '=='
-    'NOT_EQUAL',  # Operador de desigualdade '!='
-    'LESS_EQUAL',  # Operador 'menor ou igual' '<='
-    'GREATER_EQUAL',  # Operador 'maior ou igual' '>='
-    'LESS',  # Operador 'menor que' '<'
-    'GREATER',  # Operador 'maior que' '>'
-    'SEMICOLON',  # Ponto-e-vírgula ';'
-    'COMMA',  # Vírgula ','
-    'LBRACKET',  # Colchete esquerdo '['
-    'RBRACKET',  # Colchete direito ']'
-    'LPAREN',  # Parêntese esquerdo '('
-    'RPAREN',  # Parêntese direito ')'
-    'LBRACE',  # Chave esquerda '{'
-    'RBRACE',  # Chave direita '}'
+    'PLUS',  # '+'
+    'MINUS',  # '-'
+    'TIMES',  # '*'
+    'DIVIDE',  # '/'
+    'PLUS_EQUAL',  # '+='
+    'MINUS_EQUAL',  # '-='
+    'TIMES_EQUAL',  # '*='
+    'DIVIDE_EQUAL',  # '/='
+    'EQUAL',  # '='
+    'EQUAL_EQUAL',  # '=='
+    'NOT_EQUAL',  # '!='
+    'LESS_EQUAL',  # '<='
+    'GREATER_EQUAL',  # '>='
+    'LESS',  # '<'
+    'GREATER',  # '>'
+    'SEMICOLON',  # ';'
+    'COMMA',  # ','
+    'LBRACKET',  # '['
+    'RBRACKET',  # ']'
+    'LPAREN',  # '('
+    'RPAREN',  # ')'
+    'LBRACE',  # '{'
+    'RBRACE',  # '}'
 ] + list(reserved.values())  # Adicionamos também as palavras reservadas à lista de tokens
 
 # Expressões Regulares para Tokens Simples
 # Aqui, definimos como o lexer reconhecerá cada um desses tokens com expressões regulares (regex).
 
-t_PLUS = r'\+'  # Reconhece o símbolo '+' para adição
-t_MINUS = r'-'  # Reconhece o símbolo '-' para subtração
-t_TIMES = r'\*'  # Reconhece o símbolo '*' para multiplicação
-t_DIVIDE = r'/'  # Reconhece o símbolo '/' para divisão
-t_PLUS_EQUAL = r'\+='  # Reconhece '+='
-t_MINUS_EQUAL = r'-='  # Reconhece '-='
-t_TIMES_EQUAL = r'\*='  # Reconhece '*='
-t_DIVIDE_EQUAL = r'/='  # Reconhece '/='
-t_EQUAL_EQUAL = r'=='  # Reconhece '==', operador de igualdade
-t_EQUAL = r'='  # Reconhece '=' para atribuição
-t_NOT_EQUAL = r'!='  # Reconhece '!=', operador de diferença
-t_LESS_EQUAL = r'<='  # Reconhece '<=', menor ou igual
-t_GREATER_EQUAL = r'>='  # Reconhece '>=', maior ou igual
-t_LESS = r'<'  # Reconhece '<', menor que
-t_GREATER = r'>'  # Reconhece '>', maior que
-t_SEMICOLON = r';'  # Reconhece ';', para terminar instruções
-t_COMMA = r','  # Reconhece ',' como separador de variáveis ou argumentos
-t_LBRACKET = r'\['  # Reconhece '[', para declaração de arrays
-t_RBRACKET = r'\]'  # Reconhece ']', para fechar arrays
-t_LPAREN = r'\('  # Reconhece '(', para abrir expressões ou argumentos
-t_RPAREN = r'\)'  # Reconhece ')', para fechar expressões ou argumentos
-t_LBRACE = r'\{'  # Reconhece '{', para abrir blocos de código
-t_RBRACE = r'\}'  # Reconhece '}', para fechar blocos de código
+t_PLUS = r'\+'  
+t_MINUS = r'-'  
+t_TIMES = r'\*'  
+t_DIVIDE = r'/' 
+t_PLUS_EQUAL = r'\+=' 
+t_MINUS_EQUAL = r'-='  
+t_TIMES_EQUAL = r'\*='  
+t_DIVIDE_EQUAL = r'/='  
+t_EQUAL_EQUAL = r'==' 
+t_EQUAL = r'='  
+t_NOT_EQUAL = r'!='  
+t_LESS_EQUAL = r'<='  
+t_GREATER_EQUAL = r'>='  
+t_LESS = r'<'  
+t_GREATER = r'>' 
+t_SEMICOLON = r';'  
+t_COMMA = r',' 
+t_LBRACKET = r'\[' 
+t_RBRACKET = r'\]' 
+t_LPAREN = r'\(' 
+t_RPAREN = r'\)'  
+t_LBRACE = r'\{'  
+t_RBRACE = r'\}' 
 
 # Ignorar espaços e tabulações
 # O lexer vai ignorar espaços e tabulações, pois não são relevantes para a análise sintática.
