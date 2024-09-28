@@ -1,5 +1,5 @@
-import ply.yacc as yacc  # Importa a biblioteca PLY para a construção do parser
-from lexer import tokens  # Importa os tokens gerados pelo analisador léxico (lexer.py)
+import ply.yacc as yacc  
+from lexer import tokens 
 
 # Definindo a precedência dos operadores aritméticos
 precedence = (
