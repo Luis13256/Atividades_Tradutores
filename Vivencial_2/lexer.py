@@ -67,64 +67,44 @@ t_RPAREN = r'\)'
 t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 
-# Ignorar espaços e tabulações
-t_ignore = ' \t'
-
-# Função para reconhecer comentários.
+t_ignore = ' \t'  # Ignorar espaços e tabulações
 
 
-def t_COMMENT(t):
+def t_COMMENT(t):  # Função para reconhecer comentários.
     r'//.*'
     pass  # Ignora o comentário e não retorna um token para ele
 
-# Função para identificar Identificadores e Palavras Reservadas
-# Se a sequência de caracteres se parecer com uma palavra reservada (como 'int', 'if'), ela será marcada como tal.
-# Caso contrário, será tratada como um identificador (nome de variável, função, etc.).
 
-
-def t_IDENTIFIER(t):
+def t_IDENTIFIER(t):  # Função para identificar Identificadores e Palavras Reservadas
     # Identificadores começam com uma letra ou '_', seguidos por letras, números ou '_'
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     # Verifica se o identificador é uma palavra reservada
     t.type = reserved.get(t.value, 'IDENTIFIER')
     return t  # Retorna o token identificado
 
-# Função para reconhecer números reais (com casas decimais).
-# Exemplo: 3.14, 0.99
 
-
-def t_NUMERO_REAL(t):
+def t_NUMERO_REAL(t):  # Função para reconhecer números reais (com casas decimais). Exemplo: 3.14, 0.99
     r'\d+\.\d+'  # Números reais têm dígitos seguidos de um ponto e mais dígitos
     t.value = float(t.value)  # Converte o valor reconhecido para float
     return t  # Retorna o token do número real
 
-# Função para reconhecer números inteiros.
-# Exemplo: 123, 456
 
-
-def t_NUMERO_INTEIRO(t):
+def t_NUMERO_INTEIRO(t):  # Função para reconhecer números inteiros.
     r'\d+'  # Reconhece uma sequência de dígitos
     t.value = int(t.value)  # Converte o valor reconhecido para inteiro
     return t  # Retorna o token do número inteiro
 
-# Função para contar o número de linhas
-# Cada vez que uma nova linha for encontrada, o contador de linhas será incrementado.
 
-
-def t_newline(t):
+def t_newline(t):  # Função para contar o número de linhas
     r'\n+'  # Reconhece uma ou mais quebras de linha
     # Incrementa o número de linhas pelo número de quebras de linha encontradas
     t.lexer.lineno += len(t.value)
 
-# Função de Tratamento de Erros
-# Caso o lexer encontre um caractere não reconhecido, ele chamará esta função.
 
-
-def t_error(t):
+def t_error(t):  # Função de Tratamento de Erros
     # Exibe o caractere ilegal e a linha onde ocorreu o erro
     print(f"Caractere ilegal '{t.value[0]}' na linha {t.lineno}")
     t.lexer.skip(1)  # Pula o caractere inválido e continua analisando
 
 
-# Construção do Lexer
-lexer = lex.lex()
+lexer = lex.lex()  # Construção do Lexer
