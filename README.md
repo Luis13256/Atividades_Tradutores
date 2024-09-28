@@ -215,7 +215,7 @@ while(c > 0){
 
 ## Print do main.py sendo executado:
 ### Sem erros
-![main.py exe](image.png)
+![main.py exe](GB/image.png)
 
 ### Teste com erros
-![alt text](image-1.png)
+![alt text](GB/image-1.png)
